@@ -1,0 +1,35 @@
+<?php if (!isset($_SESSION)) { session_start(); } ?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><?php echo isset($page_title) ? e($page_title) . ' - Rainy Mochi' : 'Rainy Mochi'; ?></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<?php if (is_logged_in()): ?>
+<nav class="navbar navbar-expand-lg navbar-mochi no-print">
+  <div class="container">
+    <a class="navbar-brand" href="index.php">☁️ Rainy Mochi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.php"><i class="bi bi-box-seam"></i> Data Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="report.php" target="_blank"><i class="bi bi-file-earmark-pdf"></i> Report PDF</a></li>
+      </ul>
+      <span class="navbar-text me-3">
+        <i class="bi bi-person-circle"></i> <?php echo e($_SESSION['nama_lengkap'] ?? $_SESSION['username'] ?? ''); ?>
+      </span>
+      <a href="logout.php" class="btn btn-outline-mochi btn-sm" onclick="return confirm('Yakin ingin logout?');">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a>
+    </div>
+  </div>
+</nav>
+<?php endif; ?>
+<div class="container py-4">

@@ -1,0 +1,5 @@
+# Mencegah eksekusi script PHP di folder upload (keamanan tambahan)
+<FilesMatch "\.(php|phtml|php3|php4|php5|phar)$">
+    Require all denied
+</FilesMatch>
+Options -Indexes
